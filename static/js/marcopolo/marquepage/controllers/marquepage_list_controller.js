@@ -97,7 +97,8 @@
 
             console.log("clic marquepageListCtrl déconnexion en cours"); 
             nProfilLink = nUrlArray[1]+'/'+nUrlArray[2];
-            $location.path(nProfilLink).replace();           
+            $location.path(nProfilLink).replace();
+
         };
 
         // clic sur le bouton profil

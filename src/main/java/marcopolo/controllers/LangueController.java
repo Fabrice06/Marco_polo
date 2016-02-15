@@ -1,10 +1,6 @@
 package marcopolo.controllers;
 
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SignatureException;
 import java.sql.Timestamp;
-import java.util.List;
 
 import marcopolo.dao.LangueDAO;
 import marcopolo.dao.PersonDAO;
@@ -69,19 +65,21 @@ public class LangueController {
             
             // recherche du propriétaire de la requête en fonction de son Id
             PersonDAO myPersonDAO = new PersonDAO(jdbcTemplate);
-            Person nPerson = myPersonDAO.getPersonById(pId); 
+            Person nPerson = myPersonDAO.getPerson(pId); 
         
         
             // création de la signature avec les données issues de la bddd du propriétaire de la requête
-            String nUri= "/langues?user=" + pId + "&timestamp=" + pTimestamp;
+            String nUri= "/langues?user=" + pId + "&timestamp=" + pTimestamp + "&values={\"user\":"+ pId +"}";
             String nHmac = HmacSha1Signature.calculate(nUri, nPerson.getMdp());
     
-//            log.info("nUri " + nUri);
-//            log.info("nHmac " + nHmac);
+            log.info("getMdp " + nPerson.getMdp());
+            log.info("nUri " + nUri);
+            log.info("nHmac " + nHmac);
             
             // comparaison des signatures
             if (pSignature.equals(nHmac)) {
                 
+
                 Timestamp nPersonTimestamp = new Timestamp(nPerson.getStamp());
                 Timestamp nUriTimestamp = new Timestamp(pTimestamp);
                 
@@ -106,21 +104,34 @@ public class LangueController {
 
     
     /**
+     * @param pIdLangue
+     * @return Langue object
+     */
+    public Langue getLangue(final Long pIdLangue) {
+
+        LangueDAO nLangueDAO = new LangueDAO(jdbcTemplate);
+        
+        return nLangueDAO.find(pIdLangue);
+    } // Langue
+    
+    /**
      * GET request for /langues/{idLangue}
      * 
      * Get one Langue
      * @param Long
-     * @return ResponseEntity<Langue> 
+     * @return HttpEntity<Langue> 
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/{idLangue}")
-    public HttpEntity<Langue> getLangue(@PathVariable("idLangue") Long pIdLangue) {
-            
-            log.info("webService getLangue with idLangue =" + pIdLangue);
-            LangueDAO nLangueDAO = new LangueDAO(jdbcTemplate);
-            Langue nLangue = nLangueDAO.find(pIdLangue);
-            
-            return new ResponseEntity<Langue>(nLangue, HttpStatus.OK);
-                    
-    }
+    
+//    @RequestMapping(method = RequestMethod.GET, value = "/{idLangue}")
+//    public HttpEntity<Langue> getLangue(
+//            @PathVariable("idLangue") Long pId ) {
+//            
+//            log.info("webService getLangue with idLangue =" + pId);
+//            LangueDAO nLangueDAO = new LangueDAO(jdbcTemplate);
+//            Langue nLangue = nLangueDAO.find(pId);
+//            
+//            return new ResponseEntity<Langue>(nLangue, HttpStatus.OK);
+//                    
+//    }
     
 } // class

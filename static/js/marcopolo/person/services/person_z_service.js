@@ -9,39 +9,37 @@
 
         var dataFactory = {};
 
-        dataFactory.save = function (pUrl, pParams) {
+        dataFactory.save = function (pUrl, pParams, pDatas) {
 
             // définition de la requête à usage unique
-            //var nTimestamp = Date.now();
-            //var nSignature = Session.getSignature(pUrl, pParams, nTimestamp);
+            var nTimestamp = Date.now();
+            var nSignature = Session.getSignature(pUrl, pDatas, nTimestamp);
 
             var nReq = {
                 method: 'POST',
                 url: pUrl,
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                headers: {'Content-Type': 'application/json'},
                 params: {
-                    // requête à usage unique
-                    //signature: nSignature,
-                    //timestamp: nTimestamp,
-                    //user: Session.getId(),
+                    // pour l'usage unique
+                    timestamp: nTimestamp,
+                    user: pParams.user,
+                    signature: nSignature
+                }, // params
 
-                    //params supplémentaires
-                    // attention: l'ordre des params doit être le même que dans l'uri
-                    mail: pParams.mail,
-                    mdp: pParams.mdp,
-                    langue: pParams.langue
-
-                } // params
+                data: pDatas
             };
             return $http(nReq);
         };
 
 
+        // GET sert à lire des données, pas à en envoyer, ainsi une requête GET ne peut contenir de corps.
+        // Une requête GET peut être mise en cache, elle ne doit contenir aucune information susceptible de
+        // varier dans le temps (du contenu par exemple).
         dataFactory.query = function (pUrl, pParams) {
 
             // définition de la requête à usage unique
             var nTimestamp = Date.now();
-            var nSignature = Session.getSignature(pUrl, pParams, nTimestamp);
+            var nSignature = Session.getSignature(pUrl, JSON.stringify(pParams), nTimestamp);
 
             var nReq = {
                 method: 'GET',
@@ -49,16 +47,14 @@
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 params: {
                     // requête à usage unique
-                    //signature: nSignature,
-                    //timestamp: nTimestamp,
-                    //user: Session.getId(),
+                    signature: nSignature,
+                    timestamp: nTimestamp,
+                    user: pParams.user,
 
                     //params supplémentaires
-                    // attention: l'ordre des params doit être le même que dans l'uri
                     mail: pParams.mail,
                     mdp: pParams.mdp
-
-                }
+                } // params
             };
             return $http(nReq);
         };
@@ -68,7 +64,7 @@
 
             // définition de la requête à usage unique
             var nTimestamp = Date.now();
-            var nSignature = Session.getSignature(pUrl, pParams, nTimestamp);
+            var nSignature = Session.getSignature(pUrl, JSON.stringify(pParams), nTimestamp);
 
             var nReq = {
                 method: 'DELETE',
@@ -76,41 +72,35 @@
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 params: {
                     // requête à usage unique
-                    //signature: nSignature,
-                    //timestamp: nTimestamp,
-                    //user: Session.getId()
-
-                    //params supplémentaires
-                    // attention: l'ordre des params doit être le même que dans l'uri
-                }
+                    signature: nSignature,
+                    timestamp: nTimestamp,
+                    user: pParams.user
+                } // params
             };
             return $http(nReq);
         };
 
 
-        dataFactory.update = function (pUrl, pParams) {
+        dataFactory.update = function (pUrl, pParams, pDatas) {
 
             // définition de la requête à usage unique
             var nTimestamp = Date.now();
-            var nSignature = Session.getSignature(pUrl, pParams, nTimestamp);
+            var nSignature = Session.getSignature(pUrl, pDatas, nTimestamp);
 
-            console.log("person factory params " + JSON.stringify(pParams));
+            console.log("person factory update pDatas " + pDatas);
 
             var nReq = {
                 method: 'PUT',
                 url: pUrl,
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                headers: {'Content-Type': 'application/json'},
                 params: {
-                    // requête à usage unique
-                    //signature: nSignature,
-                    //timestamp: nTimestamp,
-                    //user: Session.getId()
+                    // pour l'usage unique
+                    timestamp: nTimestamp,
+                    user: pParams.user,
+                    signature: nSignature
+                }, // params
 
-                    //params supplémentaires
-                    // attention: l'ordre des params doit être le même que dans l'uri
-                    mail: pParams.mail,
-                    langue: pParams.langue
-                }
+                data: pDatas
             };
             return $http(nReq);
         };

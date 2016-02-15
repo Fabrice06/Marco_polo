@@ -73,37 +73,118 @@
                             </span>         
                                                                       
                     </div>
-                    
+
                     <label for="langue">{{'PERSON_DETAIL_LANGUAGE' | translate}}</label><br/>
-                    
+
                     <select class="form-control"
                             ng-model="personDetailModel.langue"
                             ng-options="language.nom for language in personDetail.languages">
                     </select>
-                    
+
                     <span class="help-block">&emsp;</span>
-                    
+
+                    <label>{{'PERSON_DETAIL_PASSWD' | translate}}</label> <input type="checkbox" ng-model="personDetail.showMdpInput" />
+                    <div class="form-group"
+                         ng-class="{'has-success': personDetailModelForm.mdp1.$dirty && personDetailModelForm.mdp1.$valid && personDetail.showMdpInput,
+			                    'has-error': personDetailModelForm.mdp1.$dirty && personDetailModelForm.mdp1.$invalid && personDetail.showMdpInput}"
+                         ng-if="personDetail.showMdpInput">
+
+                        <label class="control-label">{{'PERSON_LOG_PASS' | translate}}</label>
+                        <input class="form-control"
+                               ng-model="personDetailModel.new"
+                               name="mdp1"
+                               ng-minlength="8"
+                               ng-maxlength="20"
+                               required
+                               type="password"/>
+
+	                        <span class="help-block"
+                                  ng-show="personDetailModelForm.mdp1.$pristine || personDetailModelForm.mdp1.$valid">&emsp;
+						    </span>
+
+							<span class="help-block"
+                                  ng-show="personDetailModelForm.mdp1.$dirty"
+                                  ng-messages="personDetailModelForm.mdp1.$error">
+
+								<span ng-message="required">
+								 	{{'REQUIRED' | translate}}
+								 </span>
+
+								<span ng-message="minlength">
+									{{'PERSON_LOG_MINLENGTH' | translate}}
+								</span>
+
+								<span ng-message="maxlength">
+									{{'PERSON_LOG_MAXLENGTH' | translate}}
+								</span>
+
+							</span>
+
+                    </div>
+
+                    <div class="form-group"
+                         ng-class="{'has-success': personDetailModelForm.mdp2.$dirty && personDetail.showMdpInput && personDetailModel.confirm.$error.equalsTo,
+			                    'has-error': personDetailModelForm.mdp2.$dirty && personDetail.showMdpInput && personDetailModel.confirm.$error.equalsTo}"
+                         ng-if="personDetail.showMdpInput">
+
+                        <label class="control-label">{{'PERSON_NEW_CONFIRM' | translate}}</label>
+                        <input class="form-control"
+                               ng-model="personDetailModel.confirm" name="mdp2"
+                               required
+                               type="password"
+                               equals-to="personDetailModel.new"/>
+
+	                        <!--<span class="help-block"-->
+                                  <!--ng-show="personDetailModelForm.mdp2.$pristine || !personDetailModel.confirm.$error.equalsTo">&emsp;-->
+						    <!--</span>-->
+
+
+							<span class="help-block"
+                                  ng-show="personDetailModel.confirm.$error.equalsTo"
+                                  translate="PERSON_DETAIL_DIFF">
+							</span>
+
+							<!--<span class="help-block"-->
+                                  <!--ng-show="personDetailModelForm.mdp2.$dirty"-->
+                                  <!--ng-messages="personDetailModelForm.mdp2.$error">-->
+
+								<!--<span ng-message="required">-->
+								 	<!--{{'REQUIRED' | translate}}-->
+								 <!--</span>-->
+
+								<!--<span ng-message="minlength">-->
+									<!--{{'PERSON_LOG_MINLENGTH' | translate}}-->
+								<!--</span>-->
+
+								<!--<span ng-message="maxlength">-->
+									<!--{{'PERSON_LOG_MAXLENGTH' | translate}}-->
+								<!--</span>-->
+
+							<!--</span>-->
+
+                    </div>
+
                     <div class="text-right" >
-                    
+
                         <button type="button"
                                 class="btn btn-primary"
                                 ng-click="personDetail.onCancel()">
-                                {{'CANCEL' | translate}}
+                            {{'CANCEL' | translate}}
                         </button>
-                        
+
                         <button type="button"
                                 class="btn btn-primary"
                                 ng-click="personDetail.onDelete()">
-                                {{'DELETE' | translate}}
+                            {{'DELETE' | translate}}
                         </button>
-                        
+
                         <button type="button"
                                 class="btn btn-primary"
                                 ng-disabled="personDetailModelForm.$invalid"
                                 ng-click="personDetail.onSubmit(personDetailModel)">
-                                {{'UPDATE' | translate}}
+                            {{'UPDATE' | translate}}
                         </button>
-                        
+
                     </div>
                     
                 </form>

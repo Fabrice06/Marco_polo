@@ -12,7 +12,7 @@
         dataFactory.query = function (pUrl, pParams) {
 
             var nTimestamp = Date.now();
-            var nSignature = Session.getSignature(pUrl, pParams, nTimestamp);
+            var nSignature = Session.getSignature(pUrl, JSON.stringify(pParams), nTimestamp);
 
             var nReq = {
                 method: 'GET',

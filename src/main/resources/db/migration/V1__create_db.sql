@@ -6,6 +6,13 @@
 --penser à faire un commit
 ------------------------------------------------------------------
 
+------------------------------------------------------------------
+-- Base de données :  BD_MARCOPOLO update
+-- Script testé sur SQL Workbench --> résultats ok //vincent le 13feb
+--
+--champ person.stamp: modification type du number(8) vers bigint
+------------------------------------------------------------------
+
 -- suppression des séquences (attention: ordre à respecter)
 
 /*
@@ -45,7 +52,7 @@ CREATE TABLE person (
 	id_langue NUMBER(8) CONSTRAINT CIR_langue_in_pers REFERENCES langue,
 	mail VARCHAR2(200) not null,
 	mdp VARCHAR2(40) not null,
-	stamp NUMBER(8) not null
+	stamp bigint not null
 );
 
 CREATE TABLE marquepage (
