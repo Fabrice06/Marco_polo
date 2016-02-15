@@ -1,0 +1,117 @@
+<div>
+    <!-- composant HEADER -->
+    <div class="container my-header" id="">
+    
+        <div class="row">
+        
+            <div class="col-lg-5 col-sm-12 col-lg-offset-7 text-right">
+            
+                <a href="" ng-click="personDetail.onExit()"><span class="icon-af icon-af-A-basic-power27">{{'LOGOUT' | translate}}</span></a>
+                
+            </div>
+            
+        </div>
+
+        <div class="row">
+        
+            <div class="col-xs-12">
+            
+                 <span class="fontsize-x2 color-blueaf">MarcoPolo</span>
+                 
+            </div>
+            
+		</div>
+        
+    </div><br/>
+
+    <div class="container">
+    
+        <div class="panel panel-info">
+        
+            <div class="panel-heading">
+            
+                <h3 class="panel-title">{{'PERSON_DETAIL_PROFILE' | translate}}</h3>
+                
+            </div>
+
+            <div class="panel-body">
+            
+                <form class="" 
+                	  id="my-contact-form"
+                	  role="form"
+                	  data-ng-model="personDetailModel"
+                	  name="personDetailModelForm" novalidate>
+
+                    <div class="form-group" 
+                    	 ng-class="{'has-success': personDetailModelForm.useremail.$dirty && personDetailModelForm.useremail.$valid,
+                   		 'has-error': personDetailModelForm.useremail.$dirty && personDetailModelForm.useremail.$invalid}">
+                   		 
+                            <label for="useremail" class="control-label">{{'PERSON_LOG_MAIL' | translate}}</label>
+                            
+                            <input id="useremail" 
+                            	name="useremail"
+                            	type="email"
+                            	required class="form-control"
+                            	ng-model="personDetailModel.mail"/>
+                            	
+                            <span class="help-block" 
+                            	ng-show="personDetailModelForm.useremail.$pristine || personDetailModelForm.useremail.$valid">&emsp;
+                            </span>
+                            
+                            <span  class="help-block" 
+                            	   ng-show="personDetailModelForm.useremail.$dirty" 
+                            	   ng-messages="personDetailModelForm.useremail.$error">
+                            	   
+                                    <span ng-message="required">
+                                        {{'REQUIRED' | translate}}
+                                    </span>
+                                    
+                                    <span ng-message="email">
+                                        {{'PERSON_LOG_VALID' | translate}}
+                                    </span>
+                                    
+                            </span>         
+                                                                      
+                    </div>
+                    
+                    <label for="langue">{{'PERSON_DETAIL_LANGUAGE' | translate}}</label><br/>
+                    
+                    <select class="form-control"
+                            ng-model="personDetailModel.langue"
+                            ng-options="language.nom for language in personDetail.languages">
+                    </select>
+                    
+                    <span class="help-block">&emsp;</span>
+                    
+                    <div class="text-right" >
+                    
+                        <button type="button"
+                                class="btn btn-primary"
+                                ng-click="personDetail.onCancel()">
+                                {{'CANCEL' | translate}}
+                        </button>
+                        
+                        <button type="button"
+                                class="btn btn-primary"
+                                ng-click="personDetail.onDelete()">
+                                {{'DELETE' | translate}}
+                        </button>
+                        
+                        <button type="button"
+                                class="btn btn-primary"
+                                ng-disabled="personDetailModelForm.$invalid"
+                                ng-click="personDetail.onSubmit(personDetailModel)">
+                                {{'UPDATE' | translate}}
+                        </button>
+                        
+                    </div>
+                    
+                </form>
+                
+            </div><!-- panel body -->
+            
+        </div><!-- panel  -->
+        
+    </div>
+    
+</div>

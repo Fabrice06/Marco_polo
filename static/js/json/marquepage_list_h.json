@@ -1,0 +1,219 @@
+{
+  "_links": {
+    "self": {
+      "uri": "/marquepages"
+    }
+  },
+  "data": [
+    {
+      "_links": {
+        "self": {
+          "uri": "/persons/1/marquepages"
+        },
+        "persons": {
+          "uri": "/persons/1"
+        }
+      },
+      "marquepages": [
+        {
+          "_links": {
+            "self": {
+              "uri": "/marquepages/1"
+            }
+          },
+          "lien": "lien marquepage 1",
+          "_embedded": {
+            "tags": [
+              {
+                "_links": {
+                  "self": {
+                    "uri": "/tag/1"
+                  }
+                },
+                "cle": "nom",
+                "valeur": "Google"
+              }
+            ]
+          }
+        },
+        {
+          "_links": {
+            "self": {
+              "uri": "/marquepages/2"
+            }
+          },
+          "lien": "lien marquepage 2",
+          "_embedded": {
+            "tags": [
+              {
+                "_links": {
+                  "self": {
+                    "uri": "/tag/2"
+                  }
+                },
+                "cle": "nom",
+                "valeur": "idée déco"
+              },
+              {
+                "_links": {
+                  "self": {
+                    "uri": "/tag/3"
+                  }
+                },
+                "cle": "description",
+                "valeur": "description idée déco"
+              }
+            ]
+          }
+        },
+        {
+          "_links": {
+            "self": {
+              "uri": "/marquepages/3"
+            }
+          },
+          "lien": "lien marquepage 3",
+          "_embedded": {
+            "tags": [
+              {
+                "_links": {
+                  "self": {
+                    "uri": "/tags/4"
+                  }
+                },
+                "cle": "nom",
+                "valeur": "cours android"
+              },
+              {
+                "_links": {
+                  "self": {
+                    "uri": "/tags/20"
+                  }
+                },
+                "cle": "description",
+                "valeur": "description cours android"
+              }
+            ]
+          }
+        },
+        {
+          "_links": {
+            "self": {
+              "uri": "/marquepages/4"
+            }
+          },
+          "lien": "lien marquepage 4",
+          "_embedded": {
+            "tags": [
+              {
+                "_links": {
+                  "self": {
+                    "uri": "/tags/5"
+                  }
+                },
+                "cle": "nom",
+                "valeur": "polochon"
+              },
+              {
+                "_links": {
+                  "self": {
+                    "uri": "/tags/67"
+                  }
+                },
+                "cle": "couleur",
+                "valeur": "blouge"
+              }
+            ]
+          }
+        },
+        {
+          "_links": {
+            "self": {
+              "uri": "/marquepages/5"
+            }
+          },
+          "lien": "lien marquepage 5",
+          "_embedded": {
+            "tags": [
+              {
+                "_links": {
+                  "self": {
+                    "uri": "/tags/6"
+                  }
+                },
+                "cle": "nom",
+                "valeur": "polochon"
+              },
+              {
+                "_links": {
+                  "self": {
+                    "uri": "tags/100"
+                  }
+                },
+                "cle": "date",
+                "valeur": "2014"
+              },
+              {
+                "_links": {
+                  "self": {
+                    "uri": "tags/101"
+                  }
+                },
+                "cle": "description",
+                "valeur": "Systeme-Reseaux"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_links": {
+        "self": {
+          "uri": "/persons/2/marquepages"
+        },
+        "persons": {
+          "uri": "/persons/2"
+        }
+      },
+      "marquepages": [
+      ]
+    },
+    {
+      "_links": {
+        "self": {
+          "uri": "/persons/3/marquepages"
+        },
+        "persons": {
+          "uri": "/persons/3"
+        }
+      },
+      "marquepages": [
+      ]
+    },
+    {
+      "_links": {
+        "self": {
+          "uri": "/persons/4/marquepages"
+        },
+        "persons": {
+          "uri": "/persons/4"
+        }
+      },
+      "marquepages": [
+      ]
+    },
+    {
+      "_links": {
+        "self": {
+          "uri": "/persons/5/marquepages"
+        },
+        "persons": {
+          "uri": "/persons/5"
+        }
+      },
+      "marquepages": [
+      ]
+    }
+  ]
+}

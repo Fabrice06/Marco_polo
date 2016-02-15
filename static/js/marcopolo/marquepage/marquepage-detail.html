@@ -1,0 +1,297 @@
+<div>
+    <!-- composant HEADER -->
+	<div 
+         class="container my-header" 
+         id="">
+		
+        <div 
+             class="row">
+			
+            <div 
+                 class="col-lg-5 col-sm-12 col-lg-offset-7 text-right">
+                <a 
+                   href="" ng-click="onProfil()"><span class="icon-af icon-af-A-basic-user77">{{'PROFILE' | translate}}</span>
+                </a> 
+                
+                <span>&NonBreakingSpace;|&NonBreakingSpace;</span>
+                
+                <a 
+                   href="" 
+                   ng-click="onExit()"><span class="icon-af icon-af-A-basic-power27">{{'LOGOUT' | translate}}</span>
+                </a>
+                
+            </div>
+
+        </div>
+
+        <div 
+             class="row">
+            
+            <div class="col-xs-12">
+                
+                <span 
+                      class="fontsize-x2 color-blueaf">MarcoPolo
+                </span>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+	
+	<br/>
+
+    <div 
+         class="container">
+
+        <div 
+             class="panel panel-info col-xs-12 panel_sans_padding"
+             ng-class="{'panel-danger':invalidInfos,'panel-info':!invalidInfos}">
+                
+            <div 
+                 class="panel-heading">
+                
+                <h3 
+                    class="panel-title">{{'MQP_DET_TITLE' | translate}}
+                    <span class="icon-af icon-af icon-af icon-af icon-af-C-metier-meridiens pull-right"></span>
+                </h3>
+                
+            </div>
+
+            <div 
+                 class="panel-body">
+
+                <form 
+                      class="" 
+                      id="my-contact-form" 
+                      role="form"
+                      data-ng-model="marquepageDetailModel" 
+                      name="marquepageDetailModelForm"                             
+                      ng-submit="onUpdate(marquepageDetailModel)"
+                      novalidate>
+
+                    <div
+                         class="form-group"
+                         ng-class="{'has-success': marquepageDetailModelForm.nom.$dirty && marquepageDetailModelForm.nom.$valid,
+                                    'has-error': marquepageDetailModelForm.nom.$dirty && marquepageDetailModelForm.nom.$invalid }">
+
+                        <label 
+                               for="name" 
+                               class="control-label bold">{{'MQP_DET_NAME' | translate}}
+                        </label> 
+                        
+                        <input 
+                               id="nom" 
+                               name="nom" 
+                               type="text" 
+                               required 
+                               class="form-control input-Black"
+                               ng-model="marquepageDetailModel.nom"> 
+
+                        <div
+                             class="help-block"
+                             ng-show="marquepageDetailModelForm.nom.$pristine || marquepageDetailModelForm.nom.$valid">&emsp;
+                        </div>
+
+
+                        <div 
+                             class="help-block"
+                             ng-show="marquepageDetailModelForm.nom.$dirty"
+                             ng-messages="marquepageDetailModelForm.nom.$error">
+
+                            <div 
+                                ng-message="required">{{'REQUIRED' | translate}}
+                            </div> 
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div 
+                         class="form-group"
+                         ng-class="{'has-success': marquepageDetailModelForm.lien.$dirty && marquepageDetailModelForm.lien.$valid,
+                        'has-error': marquepageDetailModelForm.lien.$dirty && marquepageDetailModelForm.lien.$invalid }">
+
+                        <label 
+                               for="lien" 
+                               class="control-label bold">{{'MQP_DET_LINK' | translate}} 
+
+                        </label> 
+                        
+                        <input 
+                               id="lien" 
+                               name="lien" 
+                               type="url"
+                               required 
+                               class="form-control input-Black" 
+                               ng-model="marquepageDetailModel.lien">
+
+                         <div
+                             class="help-block"
+                             ng-show="marquepageDetailModelForm.lien.$pristine || marquepageDetailModelForm.lien.$valid">&emsp;
+                        </div>
+
+                        <div 
+                             class="help-block"
+                             ng-show="marquepageDetailModelForm.lien.$dirty"
+                             ng-messages="marquepageDetailModelForm.lien.$error">
+
+                            <div 
+                                 ng-message="required">{{'REQUIRED' | translate}}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <table 
+                           class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div 
+                                         class="input-group">
+                                        <div 
+                                             class="input-group-btn btn-Gris">
+
+                                            <button 
+                                                    type="button" 
+                                                    class="btn btn-default dropdown-toggle bold" 
+                                                    data-toggle="dropdown" 
+                                                    aria-expanded="false" 
+                                                    disabled>{{'MQP_DET_KEY' | translate}}
+                                            </button>
+
+                                        </div>
+
+                                        <input 
+                                               name="cle"
+                                               id="cle"
+                                               list="choixCle" 
+                                               type="text" 
+                                               class="form-control input-Black"
+                                               ng-model="marquepageDetailModel.cle">
+
+                                        <datalist 
+                                                  id="choixCle">
+                                            <option 
+                                                    data-ng-repeat="c in cles" 
+                                                    value="{{c.cle}}">
+                                            </option>
+
+                                        </datalist>
+
+                                    </div><!-- /input-group -->
+
+                                </th>
+
+                                <th>
+                                    <div 
+                                         class="input-group">
+                                        <div 
+                                             class="input-group-btn btn-Gris">
+
+                                            <button 
+                                                    type="button" 
+                                                    class="btn btn-default dropdown-toggle bold" 
+                                                    data-toggle="dropdown" 
+                                                    aria-expanded="false" 
+                                                    disabled>{{'MQP_DET_VALUE' | translate}}
+                                            </button>
+
+                                        </div>
+
+
+                                        <input 
+                                               name="valeur"
+                                               id="valeur"
+                                               type="text" 
+                                               class="form-control input-Black" 
+                                               placeholder="" 
+                                               aria-label="..."
+                                               ng-model="marquepageDetailModel.valeur">
+                                        <!--		<input type="text" class="form-control" placeholder="Valeur" aria-label="...">  -->
+                                    </div><!-- /input-group -->
+                                </th>
+
+                                <th 
+                                    class="last_column2">
+
+                                    <abbr 
+                                          title="add">
+
+                                        <button 
+                                                type="button" 
+                                                class="btn btn-default btn-md"
+                                                data-ng-click="onAdd(marquepageDetailModel)">
+
+                                            <span 
+                                                  class="icon-af icon-af icon-af-B-digital-plus">
+                                            </span>
+
+                                        </button>
+                                    </abbr>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr 
+                                data-ng-repeat="t in marquepageDetailModel.tags|filter:search|orderBy:predicate ='cle'">
+
+                                <td>{{t.cle}}</td>
+                                <td>{{t.valeur}}</td>
+                                <td 
+                                    class="last_column2">
+
+                                    <abbr 
+                                          title="delete">
+
+                                        <button 
+                                                type="button" 
+                                                class="btn btn-default btn-md"
+                                                data-ng-click="onDel(t)">
+
+                                            <span 
+                                                  class="icon-af icon-af-B-digital-cross">
+                                            </span>
+
+                                        </button>
+                                    </abbr>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div 
+                         class="text-right">
+                        
+                        <button 
+                                type="button" 
+                                name="submit-btn" 
+                                class="btn btn-primary"
+                                ng-click="onBack()">{{'CANCEL' | translate}}
+                        </button>
+                        <button 
+                                type="button" 
+                                name="submit-btn" 
+                                class="btn btn-primary"
+                                ng-click="onDelete()">{{'DELETE' | translate}}
+                        </button>
+                        <button 
+                                type="submit" 
+                                name="submit-btn" 
+                                class="btn btn-primary">{{'UPDATE' | translate}}
+                        </button>
+
+                    </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

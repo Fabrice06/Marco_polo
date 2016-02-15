@@ -1,0 +1,27 @@
+[
+  {
+	"id_person": 1,
+	"mail": "toto@free.fr",
+	"mdp": "toto"
+  },
+  {
+	"id_person": 2,
+	"mail": "titi@mail.fr",
+	"mdp": "titi"
+  },
+  {
+	"id_person": 3,
+	"mail": "tutu@mail.fr",
+	"mdp": "tutu"
+  },
+  {
+	"id_person": 4,
+	"mail": "tete@mail.fr",
+	"mdp": "tete"
+  },
+  {
+    "id_person": 5,
+    "mail": "zz@free.fr",
+    "mdp": "zz"
+  }
+]

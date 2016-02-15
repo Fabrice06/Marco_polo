@@ -1,0 +1,109 @@
+<div>
+	<!-- composant HEADER -->
+	<div class="container my-header" id="">
+		<div class="row">
+			<div class="col-lg-5 col-sm-12 col-lg-offset-7 text-right">
+				<a href="" ng-click="onProfil()"><span class="icon-af icon-af-A-basic-user77">{{'PROFILE' | translate}}</span></a><span>&nbsp;|&nbsp;</span>
+				<a href="" ng-click="onExit()"><span class="icon-af icon-af-A-basic-power27">{{'LOGOUT' | translate}}</span></a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<span class="fontsize-x2 color-blueaf">MarcoPolo</span>
+			</div>
+		</div>
+	</div>
+
+	<br />
+
+	<div class="container ">
+		<div class="col-xs-12 panel_sans_padding">
+			<div class="col-sm-8 panel_sans_padding">
+				<form class="form-inline pull-left">
+					<div class="input-group">					
+					   <input type="text" class="form-control" ng-model="search"  id="search"  placeholder="{{'SEARCH' | translate}}">
+				 	     <span class="input-group-btn">
+							<button class="btn btn-default" type="submit" ng-click="">
+								<span class="icon-af icon-af-B-digital-loupe-recherche"></span>
+							</button>
+						</span>
+					</div>
+				</form>
+			</div>
+			
+			<div class="col-sm-4 panel_sans_padding">
+				<div class="form-inline pull-right">
+					<button type="button" class="btn btn-default btn-sm" ng-click="onAdd()">
+						<a >
+						 <span class="icon-af icon-af-A-basic-plus25"></span>
+						</a>{{'ADD' | translate}}
+					</button>
+				</div>
+			</div>
+		</div>
+		<br /> <br />
+
+		<div class=" col-xs-12 panel_sans_padding">
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th> {{'MQP_LIST_NAME' | translate}}</th>
+							<th >{{'MQP_LIST_LINKS' | translate}}</th>
+							<th >{{'MQP_DET_KEY' | translate}}</th>
+							<th >{{'MQP_DET_VALUE' | translate}}</th>
+							<th class="last_column"></th>
+						</tr>
+					</thead>
+
+					<tfoot>
+						<tr>
+							<td colspan="5">&nbsp;</td>
+						</tr>
+					</tfoot>
+					
+					
+					<tbody data-ng-repeat ="l in listMqp|filter:search|orderBy:'nom'">
+							<td ng-hide="l.tags[0].cle" >{{l.nom}}</td>
+							<td ng-hide="l.tags[0].cle"ng-click="openLink(l)"><a href="">{{l.lien}}</a></td>
+							<td ng-hide="l.tags[0].cle"></td>
+							<td ng-hide="l.tags[0].cle"></td>	
+							<td ng-hide="l.tags[0].cle">
+								<abbr title="edit">
+									 <a class="btn btn-primary" ng-click="onUpdate(l)">
+									   <span class="icon-af icon-af-B-digital-crayon-editer"></span>
+									</a>
+								</abbr> 
+								<abbr title="delete">
+									<button type="button" class="btn btn-default btn-md" ng-click="onDelete(l)">
+										<span class="icon-af icon-af-B-digital-cross"></span>
+									</button>
+								</abbr>
+							</td>					
+						<tr data-ng-repeat ="t in l.tags">
+							<td >{{l.nom}}</td>
+							<td ng-click="openLink(l)"><a href="">{{l.lien}}</a></td>				
+							<td >{{t.cle}}</td>
+							<td >{{t.valeur}}</td>									
+							<td>
+								<abbr title="edit">
+									 <a class="btn btn-primary" ng-click="onUpdate(l)">
+									   <span class="icon-af icon-af-B-digital-crayon-editer"></span>
+									</a>
+								</abbr> 
+								<abbr title="delete">
+									<button type="button" class="btn btn-default btn-md" ng-click="onDelete(l)">
+										<span class="icon-af icon-af-B-digital-cross"></span>
+									</button>
+								</abbr>
+							</td>
+						</tr>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+

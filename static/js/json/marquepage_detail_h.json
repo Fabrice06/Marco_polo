@@ -1,0 +1,114 @@
+{
+  "_links": {
+    "self": {
+      "uri": "/marquepages"
+    }
+  },
+  "data": [
+    {
+      "_links": {
+        "self": {
+          "uri": "/marquepages/1"
+        }
+      },
+      "lien": "lien marquepage 1",
+      "_embedded": {
+        "tags": [
+          {
+            "_links": {
+              "self": {
+                "uri": "/tag/1"
+              }
+            },
+            "cle": "nom",
+            "valeur": "Google"
+          }
+        ]
+      }
+    },
+    {
+      "_links": {
+        "self": {
+          "uri": "/marquepages/2"
+        }
+      },
+      "lien": "lien marquepage 2",
+      "_embedded": {
+        "tags": [
+          {
+            "_links": {
+              "self": {
+                "uri": "/tag/2"
+              }
+            },
+            "cle": "description",
+            "valeur": "idée déco"
+          }
+        ]
+      }
+    },
+    {
+      "_links": {
+        "self": {
+          "uri": "/marquepages/3"
+        }
+      },
+      "lien": "lien marquepage 3",
+      "_embedded": {
+        "tags": [
+          {
+            "_links": {
+              "self": {
+                "uri": "/tags/3"
+              }
+            },
+            "cle": "description",
+            "valeur": "cours android"
+          }
+        ]
+      }
+    },
+    {
+      "_links": {
+        "self": {
+          "uri": "/marquepages/4"
+        }
+      },
+      "lien": "lien marquepage 4",
+      "_embedded": {
+        "tags": [
+        ]
+      }
+    },
+    {
+      "_links": {
+        "self": {
+          "uri": "/marquepages/5"
+        }
+      },
+      "lien": "lien marquepage 5",
+      "_embedded": {
+        "tags": [
+          {
+            "_links": {
+              "self": {
+                "uri": "tags/4"
+              }
+            },
+            "cle": "date",
+            "valeur": "2014"
+          },
+          {
+            "_links": {
+              "self": {
+                "uri": "tags/5"
+              }
+            },
+            "cle": "description",
+            "valeur": "Systeme-Reseaux"
+          }
+        ]
+      }
+    }
+  ]
+}

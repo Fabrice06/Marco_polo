@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"  ng-app='marcopolo'>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>MarcoPolo</title>
+		
+		<!-- Librairies -->
+		<script type="text/javascript" src="js/libs/angular-1.4.8/angular.js"></script>
+		<script type="text/javascript" src="js/libs/angular-1.4.8/angular-route.js"></script>
+		<script type="text/javascript" src="js/libs/angular-1.4.8/angular-resource.js"></script>
+        <script type="text/javascript" src="js/libs/angular-1.4.8/angular-messages.js"></script>
+		<script type="text/javascript" src="js/libs/bower-angular-translate-2.9.0/angular-translate.js"></script>
+        <script type="text/javascript" src="js/libs/CryptoJS_v3/rollups/hmac-sha1.js"></script>
+        <script type="text/javascript" src="js/libs/CryptoJS_v3/rollups/sha1.js"></script>
+
+        <!-- Mock BackEnd -->
+        <script type="text/javascript" src="js/libs/angular-mock/app_e2e.module.js"></script>
+        <script type="text/javascript" src="js/libs/angular-mock/angular-mocks.js"></script>
+
+		<!-- App -->
+        <script type="text/javascript" src="js/marcopolo/app.module.js"></script>
+		<script type="text/javascript" src="js/marcopolo/app.route.js"></script>
+		
+		<!-- Commons -->
+        <script type="text/javascript" src="js/marcopolo/commons/services/crypto_service.js"></script>
+        <script type="text/javascript" src="js/marcopolo/commons/services/hateoas_service.js"></script>
+        <script type="text/javascript" src="js/marcopolo/commons/services/session_service.js"></script>
+		<script type="text/javascript" src="js/marcopolo/commons/services/traduct_service.js"></script>
+
+        <!-- Language -->
+        <script type="text/javascript" src="js/marcopolo/language/services/language_service.js"></script>
+        <script type="text/javascript" src="js/marcopolo/commons/controllers/global_controller.js"></script>
+
+        <!-- Person -->
+        <script type="text/javascript" src="js/marcopolo/person/controllers/person_log_controller.js"></script>
+        <script type="text/javascript" src="js/marcopolo/person/controllers/person_new_controller.js"></script>
+        <script type="text/javascript" src="js/marcopolo/person/controllers/person_detail_controller.js"></script>
+        <script type="text/javascript" src="js/marcopolo/person/services/person_service.js"></script>
+        <script type="text/javascript" src="js/marcopolo/person/services/person_z_service.js"></script>
+        
+        <!-- Marquepage -->
+        <script type="text/javascript" src="js/marcopolo/marquepage/controllers/marquepage_new_controller.js"></script>
+        <script type="text/javascript" src="js/marcopolo/marquepage/controllers/marquepage_detail_controller.js"></script>
+
+        <script type="text/javascript" src="js/marcopolo/marquepage/services/marquepage_service.js"></script>
+
+        <script type="text/javascript" src="js/marcopolo/marquepage/controllers/marquepage_list_controller.js"></script>
+        <script type="text/javascript" src="js/marcopolo/marquepage/services/marquepage_list_service.js"></script>
+        
+		<!-- Marquepage DropDownButton -->
+        <script type="text/javascript" src="js/libs/jquery-1.12.0.js"></script>
+        <script type="text/javascript" src="js/libs/bootstrap-3.3.6/js/bootstrap.js"></script>
+        
+		<!-- CSS Bootstrap -->
+		<script type="text/javascript" src="js/libs/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+		<script type="text/javascript" src="js/libs/bootstrap/ui-bootstrap-af-tpls-overrides-0.13.0.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="all" />
+		
+		<!-- CSS Commune -->
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+        
+        <!-- Links Favicon -->
+        <link rel="apple-touch-icon" sizes="57x57" href="/img/logo/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/img/logo/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/img/logo/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/img/logo/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/logo/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/img/logo/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/logo/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/img/logo/apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" href="/img/logo/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/img/logo/android-chrome-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="/img/logo/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/img/logo/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="/manifest.json">
+        <link rel="mask-icon" href="/img/logo/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-TileImage" content="/img/logo/mstile-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+	</head>
+	
+	<body ng-controller="translateCtrl">
+        <div ng-view></div>
+
+		<footer ng-controller="globalCtrl">
+            <a href="" ng-click="onHelp()">{{'HELP' | translate}}</a>
+			<span>&nbsp;|&nbsp;</span>
+			<a href="" ng-click="aboutUs()">{{'PERSON_LOG_WHO' | translate}}</a>
+			<span>&nbsp;|&nbsp;</span>
+			<a href="mailto:marcopolo.admin@gmail.com">{{'PERSON_LOG_CONTACT' | translate}}</a>
+		</footer>
+
+
+
+	</body>
+
+
+</html>

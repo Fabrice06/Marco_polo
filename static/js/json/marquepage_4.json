@@ -1,0 +1,24 @@
+{
+	"lien":"http://lacour.xavier.free.fr/",
+	"listeDesTags":[{
+					"valeur":"2014",
+					"cle":"date",
+					"links":[{
+							"rel":"self",
+							"href":"http://localhost:8080/tags/4"}
+							]},
+					{"valeur":"Systeme-Reseaux",
+					"cle":"description",
+					"links":[{
+							"rel":"self",
+							"href":"http://localhost:8080/tags/6"}
+							]}
+					],
+	"links":[{
+			"rel":"self",
+			"href":"http://localhost:8080/marquepages/4"},
+			{"rel":"marquepages",
+			"href":"http://localhost:8080/marquepages"},
+			{"rel":"persons","href":"http://localhost:8080/persons/3"}
+			]
+}

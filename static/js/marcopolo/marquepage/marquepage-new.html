@@ -1,0 +1,111 @@
+<div>
+    <!-- composant HEADER -->
+	<div class="container my-header" id="">
+        <div class="row">
+            <div class="col-lg-5 col-sm-12 col-lg-offset-7 text-right">
+
+                <a href="" ng-click="onExit()">
+                	<span class="icon-af icon-af-A-basic-power27">{{'LOGOUT' | translate}}</span></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <span class="fontsize-x2 color-blueaf">MarcoPolo</span>
+            </div>
+        </div>
+    </div>
+	
+	<br/>
+	
+	<div class="container">
+        <!-- FORMULAIRE -->
+        <form class=""
+              name="mqpForm"
+              data-ng-model="mqpNewModel"
+              id="my-contact-form"
+              novalidate="true"
+              role="form">
+            
+            <div class="form-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        
+                        <h3 class="panel-title">{{'MQP_NEW_TITLE' | translate}}
+                            <span class="icon-af icon-af icon-af icon-af icon-af-C-metier-meridiens pull-right"></span>
+                        </h3>
+                        
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="form-group">
+                                <label 
+                                    for="name" 
+                                    class="control-label">{{'MQP_DET_NAME' | translate}}
+                                </label> 
+                            <input type="text"
+                                   ng-model="mqpNewModel.nameMqp"
+                                   class="form-control 
+                                          input-Black" 
+                                   placeholder="Nom" 
+                                   aria-describedby="basic-addon1" 
+                                   value="" 
+                                   required>
+                        </div>
+                        
+                        <br/>
+
+                        <div class="form-group"
+                             ng-class="{'has-success' : mqpForm.mqpUrl.$dirty && mqpForm.mqpUrl.$valid,
+                                       'has-error': mqpForm.mqpUrl.$dirty && mqpForm.mqpUrl.$invalid}" >
+                                <label 
+                                    for="lien" 
+                                    class="control-label">{{'MQP_DET_LINK' | translate}}  
+                                </label> 
+                            <input name="mqpUrl"
+                                   type="url"
+                                   ng-model="mqpNewModel.url"
+                                   placeholder="http://...." 
+                                   class="form-control"
+                                   aria-describedby="basic-addon1"
+                                   required>
+                            <span ng-show="mqpForm.mqpUrl.$dirty"
+                                  ng-messages="mqpForm.mqpUrl.$error">
+                                <span class="help-block"
+                                      ng-message="required">
+                                    {{'REQUIRED' | translate}} 
+                                </span>
+                                <span class="help-block"
+                                      ng-message="url">
+                                    {{'URL' | translate}} 
+                                </span>
+                            </span>
+                        </div> <!-- form group  -->
+                        
+                        <br/>
+
+                        <div class="text-right">
+                            
+                            <button ng-click="cancel()"
+                                    type="button"
+                                    name="submit-btn"
+                                    class="btn btn-primary">
+                                 {{'CANCEL' | translate}} 
+                            </button>
+
+                            <button ng-disabled="mqpForm.$invalid"
+                                    ng-click="validate(mqpNewModel)"
+                                    type="button"
+                                    name="submit-btn"
+                                    class="btn btn-primary">
+                                {{'CREATE' | translate}} 
+                            </button>
+
+                        </div> <!-- text-right -->
+                    </div> <!-- panel-body -->
+                </div> <!-- panel-info -->
+            </div> <!-- form group  -->
+		</form> <!-- mqpForm -->
+	</div> <!-- class container -->
+</div>
